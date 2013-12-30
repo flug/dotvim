@@ -26,6 +26,7 @@ set undofile
 """""""""""""""""""
 " Color and Fonts "
 """""""""""""""""""
+set t_Co=256
 set background=dark
 colorscheme molokai
 let g:molokai_original = 1
