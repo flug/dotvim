@@ -130,3 +130,6 @@
 [submodule "bundle/jshint"]
 	path = bundle/jshint
 	url = https://github.com/wookiehangover/jshint.vim
+[submodule "bundle/PHP-correct-Indenting"]
+	path = bundle/PHP-correct-Indenting
+	url = https://github.com/vim-scripts/PHP-correct-Indenting
