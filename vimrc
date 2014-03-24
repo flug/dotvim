@@ -104,6 +104,7 @@ set cc=81
     let g:airline_powerline_fonts = 1
     let g:airline_theme='sol'
     set backspace=indent,eol,start
+    set linespace=0
     set ignorecase
     set smartcase
     set wildmode=longest,list,full
