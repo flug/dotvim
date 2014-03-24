@@ -19,7 +19,7 @@ set ttyfast
 
 " display line numbers relative to the current line
 set relativenumber
-
+set number
 " save undo history to a file
 set undofile
 
