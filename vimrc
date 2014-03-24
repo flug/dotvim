@@ -42,7 +42,7 @@ let g:ctrlp_working_path_mode = 2
 let g:ctrlp_follow_symlinks=1
 let g:ctrlp_user_command = ['.git/', 'ack-grep -f %s']
 let g:ctrlp_extensions = ['tag']
-
+let g:neocomplete#enable_at_startup = 1
 set tags+=.git/tags
 
 " remove trailing spaces
