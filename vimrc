@@ -102,7 +102,7 @@ set cc=81
     set laststatus=2
 
     let g:airline_powerline_fonts = 1
-    let g:airline_theme='solarized'
+    let g:airline_theme='sol'
     set backspace=indent,eol,start
     set ignorecase
     set smartcase
