@@ -173,4 +173,11 @@ au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
 :set regexpengine=1
 :syntax enable
-
+" Vim on the iPad
+if &term == "xterm-ipad"
+  nnoremap <Tab> <Esc>
+  vnoremap <Tab> <Esc>gV
+  onoremap <Tab> <Esc>
+  inoremap <Tab> <Esc>`^
+  inoremap <Leader><Tab> <Tab>
+endif
