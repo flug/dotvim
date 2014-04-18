@@ -50,7 +50,7 @@ autocmd FileType less,sass,yml,css,html,php,twig,xml,yaml,sh autocmd BufWritePre
 autocmd BufRead,BufNewFile /etc/nginx/* setf nginx
 autocmd BufNewFile,BufRead *.md,*.mkdn,*.markdown :set filetype=markdown
 
-set grepprg=ack-grep\ --ignore-dir\ cache\ --ignore-dir\ .rsync_cache\ --ignore-dir\ web/bundles\ --follow\ --smart-case
+set grepprg=ag\ --ignore-dir\ cache\ --ignore-dir\ .rsync_cache\ --ignore-dir\ web/bundles\ --follow\ --smart-case
 
 set keywordprg=pman
 
