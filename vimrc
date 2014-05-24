@@ -19,7 +19,7 @@ set ttyfast
 
 " display line numbers relative to the current line
 set relativenumber
-
+set number
 " save undo history to a file
 set undofile
 
@@ -42,14 +42,15 @@ let g:ctrlp_working_path_mode = 2
 let g:ctrlp_follow_symlinks=1
 let g:ctrlp_user_command = ['.git/', 'ack-grep -f %s']
 let g:ctrlp_extensions = ['tag']
-
+let g:neocomplete#enable_at_startup = 1
 set tags+=.git/tags
 
 " remove trailing spaces
 autocmd FileType less,sass,yml,css,html,php,twig,xml,yaml,sh autocmd BufWritePre <buffer> :call setline(1, map(getline(1,'$'), 'substitute(v:val,"\\s\\+$","","")'))
 autocmd BufRead,BufNewFile /etc/nginx/* setf nginx
+autocmd BufNewFile,BufRead *.md,*.mkdn,*.markdown :set filetype=markdown
 
-set grepprg=ack-grep\ --ignore-dir\ cache\ --ignore-dir\ .rsync_cache\ --ignore-dir\ web/bundles\ --follow\ --smart-case
+set grepprg=ag\ --ignore-dir\ cache\ --ignore-dir\ .rsync_cache\ --ignore-dir\ web/bundles\ --follow\ --smart-case
 
 set keywordprg=pman
 
@@ -101,8 +102,9 @@ set cc=81
     set laststatus=2
 
     let g:airline_powerline_fonts = 1
-    let g:airline_theme='solarized'
+    let g:airline_theme='sol'
     set backspace=indent,eol,start
+    set linespace=0
     set ignorecase
     set smartcase
     set wildmode=longest,list,full
@@ -163,8 +165,19 @@ au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
     augroup NoSimultaneousEdits
         autocmd!
         autocmd SwapExists * let v:swapchoice = 'o'
-        autocmd SwapExists * echomsg ErrorMsg
+        autocmd SwapExists * echohl ErrorMsg
         autocmd SwapExists * echo 'Duplicate edit session (readonly)'
         autocmd SwapExists * echohl None
         autocmd SwapExists * sleep 2
     augroup END
+
+:set regexpengine=1
+:syntax enable
+" Vim on the iPad
+if &term == "xterm-ipad"
+  nnoremap <Tab> <Esc>
+  vnoremap <Tab> <Esc>gV
+  onoremap <Tab> <Esc>
+  inoremap <Tab> <Esc>`^
+  inoremap <Leader><Tab> <Tab>
+endif
