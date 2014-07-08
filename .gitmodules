@@ -157,3 +157,6 @@
 [submodule "bundle/vim-sauce"]
 	path = bundle/vim-sauce
 	url = git://github.com/joonty/vim-sauce.git
+[submodule "bundle/php.vim"]
+	path = bundle/php.vim
+	url = https://github.com/StanAngeloff/php.vim
