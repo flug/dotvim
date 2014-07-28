@@ -109,9 +109,6 @@
 [submodule "bundle/cakephp"]
 	path = bundle/cakephp
 	url = git://github.com/ndreynolds/vim-cakephp.git
-[submodule "bundle/unite"]
-	path = bundle/unite
-	url = https://github.com/Shougo/unite.vim
 [submodule "bundle/powerline"]
 	path = bundle/powerline
 	url = https://github.com/Lokaltog/powerline
@@ -157,3 +154,9 @@
 [submodule "bundle/vim-css-color"]
 	path = bundle/vim-css-color
 	url = https://github.com/Luxiyalu/vim-css-color
+[submodule "bundle/vim-sauce"]
+	path = bundle/vim-sauce
+	url = git://github.com/joonty/vim-sauce.git
+[submodule "bundle/php.vim"]
+	path = bundle/php.vim
+	url = https://github.com/StanAngeloff/php.vim
