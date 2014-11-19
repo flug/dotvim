@@ -163,3 +163,6 @@
 [submodule "bundle/vim-yaml"]
 	path = bundle/vim-yaml
 	url = https://github.com/stephpy/vim-yaml
+[submodule "bundle/loremipsum"]
+	path = bundle/loremipsum
+	url = https://github.com/vim-scripts/loremipsum/
