@@ -136,9 +136,6 @@
 [submodule "bundle/PHP-correct-Indenting"]
 	path = bundle/PHP-correct-Indenting
 	url = https://github.com/vim-scripts/PHP-correct-Indenting
-[submodule "bundle/neocomplete"]
-	path = bundle/neocomplete
-	url = https://github.com/Shougo/neocomplete.vim
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
 	url = https://github.com/tpope/vim-surround
