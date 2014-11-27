@@ -166,3 +166,6 @@
 [submodule "bundle/loremipsum"]
 	path = bundle/loremipsum
 	url = https://github.com/vim-scripts/loremipsum/
+[submodule "bundle/vim-easy-align"]
+	path = bundle/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align
