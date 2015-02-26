@@ -1,3 +1,8 @@
 # Requirements
 
-- ack
+- ag 
+- ctags
+
+```
+	silversearcher-ag exuberant-ctags 
+```
