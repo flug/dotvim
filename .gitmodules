@@ -163,3 +163,6 @@
 [submodule "bundle/vim-easy-align"]
 	path = bundle/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align
+[submodule "bundle/vim-twig"]
+	path = bundle/vim-twig
+	url = https://github.com/evidens/vim-twig
