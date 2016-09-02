@@ -1,6 +1,6 @@
 "autoload plugin
 "execute pathogen#infect()
-call plug#begin('bundle')
+call plug#begin('~/.vim/bundle')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'https://github.com/nono/vim-handlebars.git'
 Plug 'tpope/vim-fugitive'
