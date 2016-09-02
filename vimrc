@@ -1,5 +1,46 @@
 "autoload plugin
-execute pathogen#infect()
+"execute pathogen#infect()
+call plug#begin('bundle')
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'https://github.com/nono/vim-handlebars.git'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-scripts/nginx.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'bkad/CamelCaseMotion'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'https://github.com/vim-scripts/matchit.zip'
+Plug 'mhinz/vim-signify'
+Plug 'vim-scripts/argtextobj.vim'
+Plug 'vim-scripts/taglist.vim'
+Plug 'vim-scripts/auto_mkdir'
+Plug 'https://github.com/hallettj/jslint.vim'
+Plug 'https://github.com/vim-scripts/bufkill.vim'
+Plug 'brookhong/DBGPavim'
+Plug 'stephpy/vim-php-cs-fixer'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/syntastic'
+Plug 'Townk/vim-autoclose'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-unimpaired'
+Plug 'bling/vim-bufferline'
+Plug 'arnaud-lb/vim-php-namespace'
+Plug 'https://github.com/shawncplus/phpcomplete.vim.git'
+Plug 'Shougo/neocomplete'
+Plug 'tpope/vim-ragtag'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'kien/ctrlp.vim'
+Plug 'vim-scripts/php.vim-html-enhanced'
+Plug 'wookiehangover/jshint.vim'
+Plug 'vim-scripts/PHP-correct-Indenting'
+Plug 'mattn/emmet-vim'
+Plug 'stephpy/vim-yaml',  {'for': 'yml'}
+Plug 'evidens/vim-twig'
+Plug 'YorickPeterse/happy_hacking.vim'
+call plug#end()
 
 " don't try to be compatible with old specs of vi
 set nocompatible
@@ -26,23 +67,28 @@ set undofile
 """""""""""""""""""
 " Color and Fonts "
 """""""""""""""""""
-set t_Co=256
-set background=dark
-colorscheme molokai
-let g:molokai_original = 1
-lef g:rehash256 = 1 
+"set t_Co=256
+"set background=dark
+colorscheme happy_hacking
+"color "happy_hacking"
+"let g:molokai_original = 1
+"lef g:rehash256 = 1 
 
-filetype on
-filetype plugin on
+filetype plugin indent on
 let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v[\/](\.git|\.hg|\.svn|\.settings|\.sass-cache|cache|log|.rsync_cache)$',
-  \ 'file': '.un\~$\|.project$\|.buildpath$\|composer.phar$',
-  \ }
+			\ 'dir': '\v[\/](\.git|\.hg|\.svn|\.settings|\.sass-cache|cache|log|.rsync_cache)$',
+			\ 'file': '.un\~$\|.project$\|.buildpath$\|composer.phar$',
+			\ }
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_follow_symlinks=1
 let g:ctrlp_user_command = ['.git/', 'ack-grep -f %s']
 let g:ctrlp_extensions = ['tag']
+"let g:neocomplcache_enable_at_startup = 1
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
+
 set tags+=.git/tags
 
 " remove trailing spaces
@@ -74,53 +120,53 @@ nnoremap <silent> N   N:call HLNext(0.4)<cr>
 
 
 function! HLNext (blinktime)
-    highlight RedOnRed ctermfg=red ctermbg=red
-    let [bufnum, lnum, col, off] = getpos('.')
-    let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
-    echo matchlen
-    let ring_pat = (lnum > 1 ? '\%'.(lnum-1).'l\%>'.max([col-4,1]) .'v\%<'.(col+matchlen+3).'v.\|' : '')
-            \ . '\%'.lnum.'l\%>'.max([col-4,1]) .'v\%<'.col.'v.'
-            \ . '\|'
-            \ . '\%'.lnum.'l\%>'.max([col+matchlen-1,1]) .'v\%<'.(col+matchlen+3).'v.'
-            \ . '\|'
-            \ . '\%'.(lnum+1).'l\%>'.max([col-4,1]) .'v\%<'.(col+matchlen+3).'v.'
-    let ring = matchadd('RedOnRed', ring_pat, 101)
-    redraw
-    exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
-    call matchdelete(ring)
-    redraw
+	highlight RedOnRed ctermfg=red ctermbg=red
+	let [bufnum, lnum, col, off] = getpos('.')
+	let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
+	echo matchlen
+	let ring_pat = (lnum > 1 ? '\%'.(lnum-1).'l\%>'.max([col-4,1]) .'v\%<'.(col+matchlen+3).'v.\|' : '')
+				\ . '\%'.lnum.'l\%>'.max([col-4,1]) .'v\%<'.col.'v.'
+				\ . '\|'
+				\ . '\%'.lnum.'l\%>'.max([col+matchlen-1,1]) .'v\%<'.(col+matchlen+3).'v.'
+				\ . '\|'
+				\ . '\%'.(lnum+1).'l\%>'.max([col-4,1]) .'v\%<'.(col+matchlen+3).'v.'
+	let ring = matchadd('RedOnRed', ring_pat, 101)
+	redraw
+	exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+	call matchdelete(ring)
+	redraw
 endfunction
 
 set cc=81
 
 " Vim UI {
-    highlight clear SignColumn      " SignColumn should match background for
-                                    " things like vim-gitgutter
-    " show commands at the bottom right
-    set showcmd
-    set ruler
-    set laststatus=2
+highlight clear SignColumn      " SignColumn should match background for
+" things like vim-gitgutter
+" show commands at the bottom right
+set showcmd
+set ruler
+set laststatus=2
 
-    let g:airline_powerline_fonts = 1
-    let g:airline_theme='sol'
-    set backspace=indent,eol,start
-    set linespace=0
-    set ignorecase
-    set smartcase
-    set wildmode=longest,list,full
-    set wildmenu
-    :highlight ExtraWhitespace ctermbg=red guibg=red
-    :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+"let g:airline_powerline_fonts = 1
+"let g:airline_theme='sol'
+set backspace=indent,eol,start
+set linespace=0
+set ignorecase
+set smartcase
+set wildmode=longest,list,full
+set wildmenu
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 " }
 
 let g:dbgPavimPort = 9009
 let g:dbgPavimBreakAtEntry = 0
 
-let g:php_cs_fixer_path = "~/bin/php-cs-fixer.phar" " define the path to the php-cs-fixer.phar
+let g:php_cs_fixer_path = "~/bin/php-cs-fixer" " define the path to the php-cs-fixer.phar
 let g:php_cs_fixer_level = "all"                " which level ?
 let g:php_cs_fixer_config = "default"           " configuration
 let g:php_cs_fixer_php_path = "php"             " Path to PHP
-let g:php_cs_fixer_fixers_list = ""             " List of fixers
+"let g:php_cs_fixer_fixers_list = ""             " List of fixers
 let g:php_cs_fixer_enable_default_mapping = 1   " Enable the mapping by default (<leader>pcd)
 let g:php_cs_fixer_dry_run = 0                  " Call command with dry-run option
 let g:php_cs_fixer_verbose = 0                  " Return the output of command if 1, else an inline information.
@@ -140,44 +186,44 @@ au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 :command! -bang -range -nargs=1 -complete=file MoveAppend <line1>,<line2>write<bang> >> <args> | <line1>,<line2>delete _
 
 " Key (re)Mappings {
-  " disable noob keys
-  nnoremap <up> <nop>
-  nnoremap <down> <nop>
-  nnoremap <left> <nop>
-  nnoremap <right> <nop>
-  inoremap <up> <nop>
-  inoremap <down> <nop>
-  inoremap <left> <nop>
-  inoremap <right> <nop>
+" disable noob keys
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
 
-  " @see http://stackoverflow.com/questions/80677/what-is-the-difference-between-c-c-and-c-in-vim
-  inoremap <C-c> <Esc><Esc>
+" @see http://stackoverflow.com/questions/80677/what-is-the-difference-between-c-c-and-c-in-vim
+inoremap <C-c> <Esc><Esc>
 
-  "Make moving around windows faster
-  nnoremap <C-h> <C-w>h
-  nnoremap <C-j> <C-w>j
-  nnoremap <C-k> <C-w>k
-  nnoremap <C-l> <C-w>l
+"Make moving around windows faster
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 " }
 
 "====[ Open any file with a pre-existing swapfile in readonly mode "]=========
 
-    augroup NoSimultaneousEdits
-        autocmd!
-        autocmd SwapExists * let v:swapchoice = 'o'
-        autocmd SwapExists * echohl ErrorMsg
-        autocmd SwapExists * echo 'Duplicate edit session (readonly)'
-        autocmd SwapExists * echohl None
-        autocmd SwapExists * sleep 2
-    augroup END
+augroup NoSimultaneousEdits
+	autocmd!
+	autocmd SwapExists * let v:swapchoice = 'o'
+	autocmd SwapExists * echohl ErrorMsg
+	autocmd SwapExists * echo 'Duplicate edit session (readonly)'
+	autocmd SwapExists * echohl None
+	autocmd SwapExists * sleep 2
+augroup END
 
 :set regexpengine=1
 :syntax enable
 " Vim on the iPad
 if &term == "xterm-ipad"
-  nnoremap <Tab> <Esc>
-  vnoremap <Tab> <Esc>gV
-  onoremap <Tab> <Esc>
-  inoremap <Tab> <Esc>`^
-  inoremap <Leader><Tab> <Tab>
+	nnoremap <Tab> <Esc>
+	vnoremap <Tab> <Esc>gV
+	onoremap <Tab> <Esc>
+	inoremap <Tab> <Esc>`^
+	inoremap <Leader><Tab> <Tab>
 endif
