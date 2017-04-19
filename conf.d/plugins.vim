@@ -30,18 +30,16 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired'
-Plug 'bling/vim-bufferline'
 Plug 'arnaud-lb/vim-php-namespace'
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'Shougo/neocomplete'
 Plug 'Shougo/neosnippet'
-"Plug 'https://github.com/Shougo/neosnippet-snippets'
+Plug 'https://github.com/Shougo/neosnippet-snippets'
 Plug '2072/PHP-Indenting-for-VIm'
 Plug 'tpope/vim-ragtag'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-scripts/php.vim-html-enhanced'
 Plug 'https://github.com/2072/PHP-Indenting-for-VIm'
-Plug 'php-vim/phpcd.vim', { 'for': 'php' , 'do': 'composer update' } 
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
@@ -51,14 +49,12 @@ Plug 'https://github.com/rking/ag.vim'
 Plug 'bcicen/vim-vice'
 Plug 'stephpy/vim-yaml',  {'for': 'yml'}
 Plug 'evidens/vim-twig'
-Plug 'YorickPeterse/happy_hacking.vim'
 Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/craigemery/vim-autotag'
 Plug 'https://github.com/jelera/vim-javascript-syntax', {'for': 'js'}
 Plug 'https://github.com/jiangmiao/simple-javascript-indenter', {'for': 'js'}
 Plug 'https://github.com/shawncplus/phpcomplete.vim'
-
+Plug 'https://github.com/brigade/scss-lint'
+Plug 'https://github.com/ryanoasis/vim-devicons'
 "Plug 'Valloric/YouCompleteMe', { 'do': './install.py' } 
 call plug#end()
-
-
